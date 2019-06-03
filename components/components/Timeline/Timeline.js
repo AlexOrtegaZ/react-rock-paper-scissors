@@ -4,7 +4,7 @@ import './Timeline.scss';
 
 const Timeline = ({ history = [] }) => (
     <div className="timeline-container">
-        <h4>History <span>({history.length} games)</span> </h4>
+        <h4>History <span>({history.length} games played)</span> </h4>
         <div className="plays-container">
             {
                 history.length && 

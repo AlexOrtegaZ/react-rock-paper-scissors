@@ -9,11 +9,11 @@ $lose: #e74c3c;
     position: relative;
     &.lose {
         border-color: $lose;
-        h4 {
+        .title {
             color: $lose;
         }
     }
-    h4 {
+    .title {
         position: absolute;
         background: white;
         top: -12px;

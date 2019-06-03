@@ -6,7 +6,7 @@ const Play = ({ userOption = 'R', cpuOption = 'P' }) => {
     const userWins = youWin(userOption, cpuOption);
     return (
         <div className={`play-container ${ userWins ? 'win': 'lose' }`}  >
-            <h4>{userWins ? 'Win' : 'Lose'}</h4>
+            <h4 className="title">{userWins ? 'Win' : 'Lose'}</h4>
             <div className="options-container">
                 <Option player="you" option={userOption} />
                 <hr />
