@@ -1,0 +1,21 @@
+
+body {
+    margin: 0;
+}
+.app-container {
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    > div {
+        height: 100vh;
+        overflow: hidden;
+    }
+    .main-container {
+        flex: 4;
+    }
+    .side-bar-container {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        border-left: 2px #eee solid;
+    }
+}

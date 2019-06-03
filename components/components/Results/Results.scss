@@ -1,0 +1,27 @@
+.results-container {
+    flex: 1;
+    background: #eee;
+    padding: 12px;
+}
+.results-container h4 {
+    margin: 0;
+}
+.results-container .scores-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.results-container .scores-container span {
+    flex: 1;
+    text-align: center;
+    font-size: 5em;
+    position: relative;
+    top: -12px;
+    padding: 0 12px;
+}
+
+.results-container .scores-container .counter-container:first-child {
+    text-align: right;
+}
+
