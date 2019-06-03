@@ -1,14 +1,12 @@
 .counter-container {
     flex: 2;
-}
-
-.counter-container h1 {
-    margin: 0;
-    font-size: 3.4em;
-}
-
-.counter-container p {
-    margin: 0;
-    margin-top: -4px;
-    color: #666;
+    h1 {
+        margin: 0;
+        font-size: 3.4em;
+    }
+    p {
+        margin: 0;
+        margin-top: -4px;
+        color: #666;
+    }
 }

@@ -1,0 +1,52 @@
+$win: #2ecc71;
+$lose: #e74c3c;
+
+.play-container {
+    border: 2px solid $win;
+    padding: 16px 12px;
+    border-radius: 4px;
+    margin: 16px 0;
+    position: relative;
+    &.lose {
+        border-color: $lose;
+        h4 {
+            color: $lose;
+        }
+    }
+    h4 {
+        position: absolute;
+        background: white;
+        top: -12px;
+        padding: 0 8px;
+        font-size: 1.2em;
+        font-weight: 300;
+        color: $win;
+    }
+    .options-container {
+        display: flex;
+        position: relative;    
+        justify-content: space-around;
+        .option-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: 55%;
+            }
+            p {
+                margin: 0;
+                padding-top: 8px;
+                color: #666;        
+            }
+        }
+        hr {
+            z-index: -1;
+            position: absolute;
+            width: 60%;
+            left: 20%;
+            top: 20%;
+            border: solid 1px #e0e0e0;
+        }
+    }   
+}

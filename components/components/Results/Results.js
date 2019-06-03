@@ -2,13 +2,13 @@ import Counter from './components/Counter/Counter';
 import React from 'react';
 import './Results.scss';
 
-const Results = () => (
+const Results = ({ counter: { user, cpu }}) => (
     <div className="results-container">
         <h4>Score</h4>
         <div className="scores-container">
-            <Counter name="you" counter={0} />
+            <Counter player="you" counter={user} />
             <span>-</span>
-            <Counter name="cpu" counter={0}  />
+            <Counter player="cpu" counter={cpu}  />
         </div>
     </div>
 )

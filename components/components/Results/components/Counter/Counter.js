@@ -1,10 +1,10 @@
 import React from 'react';
 import './Counter.scss';
 
-const Counter = ({name, counter}) => (
+const Counter = ({player, counter}) => (
     <div className="counter-container">
         <h1>{counter}</h1>
-        <p>{name}</p>
+        <p>{player}</p>
     </div>
 )
 

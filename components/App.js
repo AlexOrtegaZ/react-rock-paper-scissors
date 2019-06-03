@@ -5,22 +5,28 @@ import './App.scss';
 
 class App extends React.Component {
   state = { 
-    counter: { user: 0, cpu: 0 }, 
-    history: []
+    counter: { user: 0, cpu: 1 }, 
+    history: [{userOption: 'R', cpuOption: 'P' }, { userOption: 'S', cpuOption: 'P'},  ],
   }
 
-  render() { 
+  getUserOptionsSummary = () => {
+    const { history } = this.state;
+    return history.map(h => h.userOption).join('');
+  }
+
+  render() {
+    const { counter, history } = this.state; 
     return (
       <div className="app-container">
         {/* Main */}
         <div className="main-container">
-          <h2>Rock, Paper && Scissors</h2>    
+          <h2>Rock, Paper && Scissors</h2> 
         </div>
 
         {/* Side Bar */}
         <div className="side-bar-container">
-          <Results />
-          <Timeline />
+          <Results counter={counter} />
+          <Timeline history={history} />
         </div>
         
       </div>
