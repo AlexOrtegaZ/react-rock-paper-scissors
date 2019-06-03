@@ -2,10 +2,17 @@
     flex: 1;
     background: #eee;
     padding: 12px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: relative;
     h4 {
         margin: 0;
         color: #666;
         font-weight: 500;
+        position: absolute;
+        top: 12px;
+        left: 12px;
     }
     .scores-container {
         display: flex;

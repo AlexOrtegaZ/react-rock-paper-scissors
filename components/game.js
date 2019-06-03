@@ -46,16 +46,16 @@ export const options = {
     }
 };
 export class Play {
-    constructor(user, cpu) {
-        this.user = user;
-        this.cpu = cpu;
+    constructor(userMove, cpuMove) {
+        this.userMove = userMove;
+        this.cpuMove = cpuMove;
     }
 
     get result() {
         let playResult = resultsEnum.LOSE;
-        if(options[this.user].winsTo === this.cpu) {
+        if(options[this.userMove].winsTo === this.cpuMove) {
             playResult = resultsEnum.WIN;
-        } else if (this.user === this.cpu){
+        } else if (this.userMove === this.cpuMove){
             playResult = resultsEnum.TIE;
         }
         return results[playResult];

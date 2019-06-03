@@ -8,9 +8,9 @@ const Timeline = ({ history = [] }) => {
         <h4>History <span>({history.length} games played)</span> </h4>
         <div className="plays-container">
             {
-                history.length && 
+                history.length !== 0 && 
                 history.map((h, i) => (
-                    <Play key={i + h.user } result={h.result} {...h} />
+                    <Play key={i + h.userMove } result={h.result} {...h} />
                 ))
             }
         </div>

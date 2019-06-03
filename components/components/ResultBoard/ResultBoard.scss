@@ -1,0 +1,52 @@
+.result-board-container {
+    position: absolute;
+    width: 100%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    .result {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 500px;
+        h1 {
+            font-size: 3em;
+            text-align: center
+        }
+        .options-container {
+            display: flex;
+            justify-content: space-around;
+            width: 90%;
+            position: relative;
+            .option-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                img {
+                    z-index: 1;
+                    width: 100%;
+                }
+                p {
+                    margin: 0;
+                    padding-top: 8px;
+                    font-size: 2em;
+                    color: white;        
+                }
+            }
+            hr {
+                z-index: 0;
+                position: absolute;
+                width: 60%;
+                left: 20%;
+                top: 30%;
+                border: solid 1px white;
+            }
+        }
+    }
+     
+}

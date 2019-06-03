@@ -1,13 +1,13 @@
 import React from 'react';
 import './Play.scss';
 
-const Play = ({ result, user, cpu }) =>  (
+const Play = ({ result, userMove, cpuMove }) =>  (
     <div className={`play-container ${ result.name }`}  >
         <h4 className="title">{result.name.toUpperCase()}</h4>
         <div className="options-container">
-            <Option player="you" option={user} />
+            <Option player="you" option={userMove} />
             <hr />
-            <Option player="cpu" option={cpu} />
+            <Option player="cpu" option={cpuMove} />
         </div>
         
     </div>
