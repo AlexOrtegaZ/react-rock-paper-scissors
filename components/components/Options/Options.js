@@ -4,7 +4,7 @@ import './Options.scss';
 
 const Options = ({ onSelectOption }) => (
     <div className="options-container">
-        <h3>Chose</h3>
+        <h3>Choose</h3>
         <div className="options-list">
             {
                 Object.values(optionsEnums).map(option => (

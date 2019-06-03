@@ -4,7 +4,7 @@ import './Play.scss';
 const Play = ({ result, userMove, cpuMove }) =>  (
     <div className={`play-container ${ result.name }`}  >
         <h4 className="title">{result.name.toUpperCase()}</h4>
-        <div className="options-container">
+        <div className="moves-container">
             <Option player="you" option={userMove} />
             <hr />
             <Option player="cpu" option={cpuMove} />
@@ -15,7 +15,7 @@ const Play = ({ result, userMove, cpuMove }) =>  (
 
 
 const Option = ({ player, option }) => (
-    <div className="option-container">
+    <div className="move">
         <img src={`../../../../../assets/images/mini-${option.toLowerCase()}.png`} />
         <p>{player}</p>
     </div>

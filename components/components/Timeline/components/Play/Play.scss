@@ -28,11 +28,11 @@ $lose: #e74c3c;
         font-weight: 300;
         color: #888;
     }
-    .options-container {
+    .moves-container {
         display: flex;
         position: relative;    
         justify-content: space-around;
-        .option-container {
+        .move {
             display: flex;
             flex-direction: column;
             justify-content: center;
