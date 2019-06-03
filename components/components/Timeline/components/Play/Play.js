@@ -1,21 +1,18 @@
 import React from 'react';
-import { youWin } from '../../../../game';
 import './Play.scss';
 
-const Play = ({ userOption = 'R', cpuOption = 'P' }) => {
-    const userWins = youWin(userOption, cpuOption);
-    return (
-        <div className={`play-container ${ userWins ? 'win': 'lose' }`}  >
-            <h4 className="title">{userWins ? 'Win' : 'Lose'}</h4>
-            <div className="options-container">
-                <Option player="you" option={userOption} />
-                <hr />
-                <Option player="cpu" option={cpuOption} />
-            </div>
-            
+const Play = ({ result, user, cpu }) =>  (
+    <div className={`play-container ${ result.name }`}  >
+        <h4 className="title">{result.name.toUpperCase()}</h4>
+        <div className="options-container">
+            <Option player="you" option={user} />
+            <hr />
+            <Option player="cpu" option={cpu} />
         </div>
-    )
-}
+        
+    </div>
+);
+
 
 const Option = ({ player, option }) => (
     <div className="option-container">

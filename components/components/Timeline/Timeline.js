@@ -2,19 +2,20 @@ import React from 'react';
 import Play from './components/Play/Play'
 import './Timeline.scss';
 
-const Timeline = ({ history = [] }) => (
+const Timeline = ({ history = [] }) => {
+    return (
     <div className="timeline-container">
         <h4>History <span>({history.length} games played)</span> </h4>
         <div className="plays-container">
             {
                 history.length && 
                 history.map((h, i) => (
-                    <Play key={i + h.userOption} {...h} />
+                    <Play key={i + h.user } result={h.result} {...h} />
                 ))
             }
         </div>
         
     </div>
-);
+)};
 
 export default Timeline;

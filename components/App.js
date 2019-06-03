@@ -1,17 +1,36 @@
 import React from 'react';
+import Options from './components/Options/Options';
 import Results from './components/Results/Results';
 import Timeline from './components/Timeline/Timeline';
+import Title from './components/Title/Title';
 import './App.scss';
+import { Play, resultsEnum, getCpuMove } from './game';
 
 class App extends React.Component {
   state = { 
-    counter: { user: 0, cpu: 1 }, 
-    history: [{userOption: 'R', cpuOption: 'P' }, { userOption: 'S', cpuOption: 'P'},  ],
+    counter: { user: 0, cpu: 0 }, 
+    history: [],
   }
 
-  getUserOptionsSummary = () => {
-    const { history } = this.state;
-    return history.map(h => h.userOption).join('');
+  getUserMovesSummary() {
+    return this.state.history.map(h => h.user).join('');
+  }
+
+  onSelectOption = async (userMove) => {
+    const { history, counter } = this.state;
+    const cpuMove = await getCpuMove(this.getUserMovesSummary()); 
+    const newPlay = new Play(userMove, cpuMove);
+    
+    if(newPlay.result.type === resultsEnum.WIN) {
+      counter.user ++;
+    } else if (newPlay.result.type === resultsEnum.LOSE) {
+      counter.cpu ++;
+    }
+    
+    this.setState({
+      counter,
+      history: [newPlay,  ...history] 
+    });
   }
 
   render() {
@@ -20,7 +39,8 @@ class App extends React.Component {
       <div className="app-container">
         {/* Main */}
         <div className="main-container">
-          <h2>Rock, Paper && Scissors</h2> 
+          <Title />
+          <Options onSelectOption={this.onSelectOption} />
         </div>
 
         {/* Side Bar */}

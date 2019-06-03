@@ -1,0 +1,25 @@
+.options-container {
+    flex: 3;
+    .options-list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        .option {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            cursor: pointer;
+            img, p {
+                width: 70%;
+            }
+            p {
+                margin: 0;
+                margin-top: 8px;
+                text-align: center;
+            }
+        }
+    }
+}

@@ -2,11 +2,17 @@ $win: #2ecc71;
 $lose: #e74c3c;
 
 .play-container {
-    border: 2px solid $win;
+    border: 2px solid #e0e0e0;
     padding: 16px 12px;
     border-radius: 4px;
     margin: 16px 0;
     position: relative;
+    &.win {
+        border-color: $win;
+        .title {
+            color: $win;
+        }
+    }
     &.lose {
         border-color: $lose;
         .title {
@@ -20,7 +26,7 @@ $lose: #e74c3c;
         padding: 0 8px;
         font-size: 1.2em;
         font-weight: 300;
-        color: $win;
+        color: #888;
     }
     .options-container {
         display: flex;

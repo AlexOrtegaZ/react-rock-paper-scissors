@@ -3,6 +3,31 @@ export const optionsEnums = {
     PAPER: 'P',
     SCISSORS: 'S',
 }
+
+export const resultsEnum = {
+    WIN: 1,
+    LOSE: 2,
+    TIE: 3
+}
+
+export const results = {
+    [resultsEnum.WIN]: {
+        type: resultsEnum.WIN,
+        name: 'win',
+        message: 'You win',
+    },
+    [resultsEnum.LOSE]: {
+        type: resultsEnum.LOSE,
+        name: 'lose',
+        message: 'You lose',
+    },
+    [resultsEnum.TIE]: {
+        type: resultsEnum.TIE,
+        name: 'tie',
+        message: 'Tie',
+    },
+}
+
 export const options = {
     [optionsEnums.ROCK]: {
         name: 'Rock',
@@ -20,7 +45,26 @@ export const options = {
         winsTo: optionsEnums.PAPER
     }
 };
-export const youWin = (youOption, theOtherOption) => {
-    return options[youOption].winsTo === theOtherOption;
+export class Play {
+    constructor(user, cpu) {
+        this.user = user;
+        this.cpu = cpu;
+    }
+
+    get result() {
+        let playResult = resultsEnum.LOSE;
+        if(options[this.user].winsTo === this.cpu) {
+            playResult = resultsEnum.WIN;
+        } else if (this.user === this.cpu){
+            playResult = resultsEnum.TIE;
+        }
+        return results[playResult];
+    }
+}
+
+export const getCpuMove = (userMovesSummary) => {
+    return fetch(`https://smartplay.afiniti.com/v1/play/${userMovesSummary}`)
+    .then((res) => res.json())
+    .then((res) => res.nextBestMove);
 }
 

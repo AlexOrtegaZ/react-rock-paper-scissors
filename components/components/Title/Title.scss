@@ -1,0 +1,14 @@
+@import '../../../assets/css/styles.scss';
+
+.title-container {
+    flex: 1;
+    .rock {
+        color: $rock-color;
+    }    
+    .paper {
+        color: $paper-color;
+    }
+    .scissors {
+        color: $scissors-color;
+    }
+}
