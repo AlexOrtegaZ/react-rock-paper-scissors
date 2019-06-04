@@ -1,17 +1,19 @@
 import React from 'react';
 import Options from './components/Options/Options';
+import ResultBoard from './components/ResultBoard/ResultBoard';
 import Results from './components/Results/Results';
+import SwitchFreakyMode from './components/SwitchFreakyMode/SwitchFreakyMode';
 import Timeline from './components/Timeline/Timeline';
 import Title from './components/Title/Title';
 import './App.scss';
 import { Play, resultsEnum, getCpuMove } from './game';
-import ResultBoard from './components/ResultBoard/ResultBoard';
 
 class App extends React.Component {
   state = { 
     counter: { user: 0, cpu: 0 }, 
     history: [],
     newPlay: null,
+    freakyMode: false,
   }
 
   getUserMovesSummary() {
@@ -19,8 +21,8 @@ class App extends React.Component {
   }
 
   onSelectOption = async (userMove) => {
-    const { history, counter } = this.state;
-    const cpuMove = await getCpuMove(this.getUserMovesSummary()); 
+    const { history, counter, freakyMode } = this.state;
+    const cpuMove = await getCpuMove(this.getUserMovesSummary(), freakyMode); 
     const newPlay = new Play(userMove, cpuMove);
     
     if (newPlay.result.type === resultsEnum.WIN) {
@@ -34,29 +36,33 @@ class App extends React.Component {
       newPlay,
       history: [newPlay,  ...history] 
     }); 
-    this.timeout = setTimeout(this.hideResultBoard, 10 * 1000);
   }
 
   hideResultBoard = () => {
     if (this.state.newPlay) {
       this.setState({ newPlay: null });
-      clearTimeout(this.timeout);
     }
   }
 
+  toogleFreakyMode = () => {
+    const { freakyMode } = this.state;
+    this.setState({ freakyMode: !freakyMode });
+  }
+
   render() {
-    const { counter, history, newPlay } = this.state; 
+    const { counter, history, newPlay, freakyMode } = this.state; 
     return (
       <div className="app-container">
         {/* Main */}
         <div className="main-container">
-          <Title />
-          <Options onSelectOption={this.onSelectOption} />
+          <Title freakyMode={freakyMode} />
+          <Options onSelectOption={this.onSelectOption} freakyMode={freakyMode} />
         </div>
 
         {/* Side Bar */}
         <div className="side-bar-container">
           <Results {...counter} />
+          <SwitchFreakyMode toogleFreakyMode={this.toogleFreakyMode} freakyMode={freakyMode} />
           <Timeline history={history} />
         </div>
         

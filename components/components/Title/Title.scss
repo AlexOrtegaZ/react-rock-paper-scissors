@@ -9,6 +9,7 @@
     h2 {
         font-size: 2em;
         margin-bottom: 0;
+        text-align: center;
     }
     hr {
         border: 2px solid #e0e0e0;
@@ -22,5 +23,8 @@
     }
     .scissors {
         color: $scissors-color;
+    }
+    .lizard, .spock {
+        color: #1D6EB0;
     }
 }
