@@ -95,7 +95,7 @@ export const getCpuMove = (userMovesSummary, geekMode) => {
         .then((res) => res.nextBestMove);
     } else {
         const options = Object.values(optionsEnums);
-        const index = getRandomArbitrary(0, options.length - 1)
+        const index = getRandomArbitrary(0, options.length);    
         return options[index]
     }
     
