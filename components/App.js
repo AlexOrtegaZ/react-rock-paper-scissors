@@ -2,40 +2,48 @@ import React from 'react';
 import Options from './components/Options/Options';
 import ResultBoard from './components/ResultBoard/ResultBoard';
 import Results from './components/Results/Results';
-import SwitchFreakyMode from './components/SwitchFreakyMode/SwitchFreakyMode';
+import SwitchGeekMode from './components/SwitchGeekMode/SwitchGeekMode';
 import Timeline from './components/Timeline/Timeline';
 import Title from './components/Title/Title';
 import './App.scss';
-import { Play, resultsEnum, getCpuMove } from './game';
+import { Play, resultsEnum, getCpuMove, optionsEnums } from './game';
 
 class App extends React.Component {
   state = { 
     counter: { user: 0, cpu: 0 }, 
     history: [],
     newPlay: null,
-    freakyMode: false,
+    geekMode: false,
   }
 
   getUserMovesSummary() {
-    return this.state.history.map(h => h.userMove).join('');
+    return this.state.history
+      .filter(h => h.userMove !== optionsEnums.LIZARD &&  h.userMove !== optionsEnums.SPOCK )
+      .map(h => h.userMove).join('');
   }
 
   onSelectOption = async (userMove) => {
-    const { history, counter, freakyMode } = this.state;
-    const cpuMove = await getCpuMove(this.getUserMovesSummary(), freakyMode); 
-    const newPlay = new Play(userMove, cpuMove);
-    
-    if (newPlay.result.type === resultsEnum.WIN) {
-      counter.user ++;
-    } else if (newPlay.result.type === resultsEnum.LOSE) {
-      counter.cpu ++;
+    const { history, counter, geekMode } = this.state;
+   
+    if(!this.isCpuThinking) {
+      this.isCpuThinking = true;
+      const cpuMove = await getCpuMove(this.getUserMovesSummary(), geekMode); 
+      this.isCpuThinking = false;
+      const newPlay = new Play(userMove, cpuMove);
+      
+      if (newPlay.result.type === resultsEnum.WIN) {
+        counter.user ++;
+      } else if (newPlay.result.type === resultsEnum.LOSE) {
+        counter.cpu ++;
+      }
+      
+      this.setState({
+        counter,
+        newPlay,
+        history: [newPlay,  ...history] 
+      }); 
     }
     
-    this.setState({
-      counter,
-      newPlay,
-      history: [newPlay,  ...history] 
-    }); 
   }
 
   hideResultBoard = () => {
@@ -44,25 +52,25 @@ class App extends React.Component {
     }
   }
 
-  toogleFreakyMode = () => {
-    const { freakyMode } = this.state;
-    this.setState({ freakyMode: !freakyMode });
+  toogleGeekMode = () => {
+    const { geekMode } = this.state;
+    this.setState({ geekMode: !geekMode });
   }
 
   render() {
-    const { counter, history, newPlay, freakyMode } = this.state; 
+    const { counter, history, newPlay, geekMode } = this.state; 
     return (
       <div className="app-container">
         {/* Main */}
         <div className="main-container">
-          <Title freakyMode={freakyMode} />
-          <Options onSelectOption={this.onSelectOption} freakyMode={freakyMode} />
+          <Title geekMode={geekMode} />
+          <Options onSelectOption={this.onSelectOption} geekMode={geekMode} />
         </div>
 
         {/* Side Bar */}
         <div className="side-bar-container">
           <Results {...counter} />
-          <SwitchFreakyMode toogleFreakyMode={this.toogleFreakyMode} freakyMode={freakyMode} />
+          <SwitchGeekMode toogleGeekMode={this.toogleGeekMode} geekMode={geekMode} />
           <Timeline history={history} />
         </div>
         

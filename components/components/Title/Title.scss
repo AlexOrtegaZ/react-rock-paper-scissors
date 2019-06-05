@@ -24,7 +24,10 @@
     .scissors {
         color: $scissors-color;
     }
-    .lizard, .spock {
-        color: #1D6EB0;
+    .lizard{
+        color: $lizard-color;
+    }
+    .spock {
+        color: $spock-color;
     }
 }

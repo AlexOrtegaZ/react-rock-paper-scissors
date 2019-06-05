@@ -1,11 +1,11 @@
 import React from 'react';
 import './Title.scss';
 
-const Title = ({ freakyMode }) => (
+const Title = ({ geekMode }) => (
     <div className="title-container">
         <h2>
             {
-                !freakyMode && (
+                !geekMode && (
                     <span>
                         <span className="rock">Rock</span>,&nbsp;
                         <span className="paper">Paper</span> &&nbsp;
@@ -14,7 +14,7 @@ const Title = ({ freakyMode }) => (
                 )
             }
             {
-                freakyMode && (
+                geekMode && (
                     <span>
                         <span className="rock">Rock</span>,&nbsp;
                         <span className="paper">Paper</span>,&nbsp;

@@ -52,7 +52,7 @@ export const options = {
     },
     [optionsEnums.LIZARD]: {
         name: 'Lizard',
-        freaky: true,
+        geek: true,
         winsTo: {
             [optionsEnums.PAPER]: 'Lizard eats paper',
             [optionsEnums.SPOCK]: 'Lizard poisons spock',
@@ -60,7 +60,7 @@ export const options = {
     },
     [optionsEnums.SPOCK]: {
         name: 'Spock',
-        freaky: true,
+        geek: true,
         winsTo: {
             [optionsEnums.ROCK]: 'Spock vaporizes Rock',
             [optionsEnums.SCISSORS]: 'Spock smashes scissors',
@@ -88,8 +88,8 @@ export class Play {
     }
 }
 
-export const getCpuMove = (userMovesSummary, freakyMode) => {
-    if (!freakyMode) {
+export const getCpuMove = (userMovesSummary, geekMode) => {
+    if (!geekMode) {
         return fetch(`https://smartplay.afiniti.com/v1/play/${userMovesSummary}`)
         .then((res) => res.json())
         .then((res) => res.nextBestMove);
