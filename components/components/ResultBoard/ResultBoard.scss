@@ -33,6 +33,10 @@
                     z-index: 1;
                     width: 100%;
                 }
+                &.cpu img {
+                    -webkit-transform: scaleX(-1);
+                    transform: scaleX(-1);
+                }
                 p {
                     margin: 0;
                     padding-top: 8px;

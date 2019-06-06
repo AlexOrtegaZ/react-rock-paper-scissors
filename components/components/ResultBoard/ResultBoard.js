@@ -22,7 +22,7 @@ const ResultBoard = ({ userMove, cpuMove, result, onClick }) => (
 
 
 const Option = ({ player, option }) => (
-    <div className="option-container">
+    <div className={`option-container ${player}`}>
         <img src={`./assets/images/mini-${option}.png`} />
         <p>{player}</p>
     </div>

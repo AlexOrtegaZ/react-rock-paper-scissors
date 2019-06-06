@@ -15,7 +15,7 @@ const Play = ({ result, userMove, cpuMove }) =>  (
 
 
 const Option = ({ player, option }) => (
-    <div className="move">
+    <div className={`move ${player}`} >
         <img src={`../../../../../assets/images/mini-${option.toLowerCase()}.png`} />
         <p>{player}</p>
     </div>
