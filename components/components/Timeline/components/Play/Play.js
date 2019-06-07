@@ -1,7 +1,7 @@
 import React from 'react';
 import './Play.scss';
 
-const Play = ({ result, userMove, cpuMove }) =>  (
+const Play = ({ play: { result, userMove, cpuMove }}) =>  (
     <div className={`play-container ${ result.name }`}  >
         <h4 className="title">{result.name.toUpperCase()}</h4>
         <div className="moves-container">

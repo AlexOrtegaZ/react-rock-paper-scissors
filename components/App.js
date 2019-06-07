@@ -77,10 +77,9 @@ class App extends React.Component {
         {/* Results Board */}
         {
           newPlay && (
-            <ResultBoard 
-              result={newPlay.result} 
+            <ResultBoard
               onClick={this.hideResultBoard}
-              {...newPlay}
+              play={newPlay}
             />
           )
         }

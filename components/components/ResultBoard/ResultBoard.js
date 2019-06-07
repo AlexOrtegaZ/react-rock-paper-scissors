@@ -3,7 +3,7 @@ import Confetti from './components/Confetti'
 import './ResultBoard.scss';
 import { resultsEnum } from '../../game';
 
-const ResultBoard = ({ userMove, cpuMove, result, onClick }) => (
+const ResultBoard = ({ play: { userMove, cpuMove, result }, onClick }) => (
     <div className="result-board-container" onClick={onClick}>
         <Confetti show={result.type === resultsEnum.WIN}>
             <div className={`result ${ result.name }`}>

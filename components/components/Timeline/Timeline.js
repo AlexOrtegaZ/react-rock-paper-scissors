@@ -9,8 +9,8 @@ const Timeline = ({ history = [] }) => {
         <div className="plays-container">
             {
                 history.length !== 0 && 
-                history.map((h, i) => (
-                    <Play key={i + h.userMove } result={h.result} {...h} />
+                history.map((play, i) => (
+                    <Play key={i + play.userMove } play={play} />
                 ))
             }
         </div>
